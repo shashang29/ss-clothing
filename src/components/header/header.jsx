@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { auth } from '../../firebase/firebase.utils';
 
@@ -15,10 +15,13 @@ const Header = ({ currentUser }) => (
             <Link className='option' to='/contact'>CONTACT</Link>
             {
                 currentUser ?
-                    <div className='option' onClick={() => auth.signOut()}>Sign Out</div> :
+                    <div className='option' onClick={() => auth.signOut()}>Sign Out</div> :(
+                        <Fragment>
                     <Link className='option' to='/signin'>Sign In</Link>
+                    <Link className='option' to='/register'>Register</Link>
+                    </Fragment>
+                    )
             }
-
         </div>
     </div>
 )
