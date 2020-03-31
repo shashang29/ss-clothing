@@ -3,7 +3,7 @@ import React from 'react';
 import FormInput from '../form-input/form-input';
 import Button from '../button/button';
 
-import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
+import { auth, createUserProfileDocument, signInWithGoogle } from '../../firebase/firebase.utils';
 
 import './register.styles.scss';
 
@@ -89,6 +89,9 @@ class Register extends React.Component {
                     />
                     <div className='button-container'>
                         <Button type='submit' > Register </Button>
+                        <Button type='button' 
+                        onClick={signInWithGoogle} 
+                        isGoogleSignIn> Register with Google </Button>
                     </div>
                 </form>
             </div>
