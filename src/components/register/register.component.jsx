@@ -1,7 +1,8 @@
 import React from 'react';
 
-import FormInput from '../form-input/form-input';
-import Button from '../button/button';
+import FormInput from '../form-input/form-input.component'
+import CustomButton from '../custom-button/custom-button.component';
+
 
 import { auth, createUserProfileDocument, signInWithGoogle } from '../../firebase/firebase.utils';
 
@@ -88,10 +89,10 @@ class Register extends React.Component {
                         required
                     />
                     <div className='button-container'>
-                        <Button type='submit' > Register </Button>
-                        <Button type='button' 
+                        <CustomButton type='submit' > Register </CustomButton>
+                        <CustomButton type='button' 
                         onClick={signInWithGoogle} 
-                        isGoogleSignIn> Register with Google </Button>
+                        isGoogleSignIn> Register with Google </CustomButton>
                     </div>
                 </form>
             </div>
