@@ -39,7 +39,7 @@ class SignIn extends React.Component {
         return (
             <div className='sign-in'>
                 <h1>Sign In</h1>
-                <form className='sign-in-form'
+                <form  className='sign-in-form'
                     onSubmit={this.handleSubmit} >
                     <FormInput
                         name='email'

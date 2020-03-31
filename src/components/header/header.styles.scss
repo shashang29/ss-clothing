@@ -1,14 +1,26 @@
 .header {
+  padding-right: 20px;
   height: 70px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
+  background-color: white;
+
+  @media (max-width: 620px) {
+    height: 50px;
+  }
 
   .logo-container {
     height: 100%;
     width: 70px;
-    padding: 25px;
+    padding: 20px;
+
+    @media (max-width: 620px) {
+      height: 100%;
+      width: 5px;
+      padding: 7px;
+    }
   }
 
   .options {
@@ -22,6 +34,11 @@
       padding: 10px 15px;
       cursor: pointer;
       white-space: nowrap;
+
+      @media (max-width: 550px) {
+        padding: 5px 5px;
+        font-size: 14px;
+      }
     }
   }
 }
