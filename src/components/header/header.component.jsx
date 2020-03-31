@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -27,9 +27,14 @@ const Header = ({ currentUser, hidden }) => (
           SIGN OUT
         </div>
       ) : (
+        <Fragment>
         <Link className='option' to='/signin'>
-          SIGN IN
+          Sign In
         </Link>
+        <Link className='option' to='/register'>
+          Register
+        </Link>
+        </Fragment>
       )}
       <CartIcon />
     </div>
