@@ -9,6 +9,10 @@
   margin: 0 7.5px 15px;
   overflow: hidden;
 
+  @media (max-width:600px){
+    flex: 50%;
+  }
+
   &:hover {
     cursor: pointer;
 
