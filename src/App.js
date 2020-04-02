@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import HomePage from './pages/homepage/homepage.component';
-import ShopPage from './pages/shop/shop.component';
+import ShopPage from './pages/shoppage/shoppage.component';
 import SignInPage from './pages/signinpage/signinpage.component';
 import RegisterPage from './pages/registerpage/registerpage.component';
 import Header from './components/header/header.component';
