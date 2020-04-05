@@ -1,5 +1,10 @@
-.header {
-  padding-right: 20px;
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { ReactComponent as LogoComponent } from '../../assets/logo.svg';
+
+
+export const HeaderContainer = styled.div`
+ padding-right: 20px;
   height: 70px;
   width: 100%;
   display: flex;
@@ -10,17 +15,14 @@
   @media (max-width: 620px) {
     height: 50px;
   }
-
-  .logo-container {
-    height: 100px;
-    width: 70px;
-    padding: 20px;
-
-  
-  }
-
-  .logo{
-    position: absolute;
+`
+export const LogoContainer = styled(Link)`
+height: 100px;
+width: 70px;
+padding: 20px;
+`
+export const Logo = styled(LogoComponent)`
+ position: absolute;
     height: 85px;
     width: 120px;
     top: 10px;
@@ -32,17 +34,18 @@
   &:hover{
     transform: scale(1.1);
   }
+`
 
-  }
-  .options {
-    width: 50%;
+export const OptionsContainer = styled.div`
+ width: 50%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+`
 
-    .option {
-      padding: 10px 15px;
+export const OptionLink = styled(Link)`
+ padding: 10px 15px;
       cursor: pointer;
       white-space: nowrap;
       transition: all .2s ease-in-out;
@@ -54,6 +57,4 @@
       &:hover{
         transform: scale(1.1);
       }
-    }
-  }
-}
+`
