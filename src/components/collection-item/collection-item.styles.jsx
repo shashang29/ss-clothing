@@ -8,6 +8,8 @@ export const CollectionItemContainer = styled.div`
   height: 350px;
   align-items: center;
   position: relative;
+  margin-bottom: 10px;
+  background-color: black;
   &:hover {
     .image {
       opacity: 0.8;
@@ -16,45 +18,62 @@ export const CollectionItemContainer = styled.div`
       opacity: 0.85;
       display: flex;
     }
-    @media screen and (max-width: 600px) {
-      flex: 45%;
-      margin: 5px;
-      height: 200px;
   }
-
-  @media screen and (max-width: 300px) {
-    flex: 80%;
-    margin: 10px;
-    height: 200px;   
-}
+  @media  (max-width: 800px) {
+    width: 45vw;
+  }
+  @media  (max-width: 500px) {
+    width: 40vw;
+    margin: 5px;
+    height: 300px;
+    &:hover {
+      .image {
+        opacity: unset;
+      }
+      button {
+        opacity: unset;
+      }
+    }
   }
 `;
 
 export const AddButton = styled(CustomButton)`
-  width: 80%;
+  width: 50%;
   opacity: 0.7;
   position: absolute;
   top: 255px;
   display: none;
+  padding: 10px;
+  @media screen and (max-width: 800px) {
+    display: block;
+    opacity: 0.9;
+  }
+  @media screen and (max-width: 500px) {
+    display: block;
+    opacity: 0.9;
+    top: 200px;
+  }
 `;
 
 export const BackgroundImage = styled.div`
   width: 100%;
-  height: 95%;
+  height: 90%;
   background-size: cover;
   background-position: center;
-  margin-bottom: 5px;
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
 `;
 
 export const CollectionFooterContainer = styled.div`
   width: 100%;
-  height: 5%;
+  height: 10%;
   display: flex;
+  background-color:black;
+  color: white;
+  padding: 10px 10px 0px 10px;
   justify-content: space-between;
   font-size: 18px;
-  @media screen and (max-width: 450px){
-    font-size: 12px;
+  @media screen and (max-width: 500px) {
+    font-size:12px;
     }
 `;
 
