@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+
 
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shoppage/shoppage.component';
@@ -10,13 +9,15 @@ import RegisterPage from './pages/registerpage/registerpage.component';
 import Header from './components/header/header.component';
 import CheckoutPage from './pages/checkoutpage/checkoutpage.component';
 
+import CurrentUserContext from './contexts/current-user/current-user.context';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
-import { setCurrentUser } from './redux/user/user.actions';
-import { selectCurrentUser } from './redux/user/user.selectors';
+
 
 import './App.css';
 
-const App = ({ setCurrentUser, currentUser }) => {
+const App = () => {
+
+  const [currentUser, setCurrentUser]=useState(null);
 
   useEffect(() => {
     const unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
@@ -38,7 +39,9 @@ const App = ({ setCurrentUser, currentUser }) => {
 
   return (
     <div>
+    <CurrentUserContext.Provider value={currentUser}>
       <Header />
+      </CurrentUserContext.Provider>
       <Switch>
         <Route exact path='/' component={HomePage} />
         <Route path='/shop' component={ShopPage} />
@@ -64,18 +67,4 @@ const App = ({ setCurrentUser, currentUser }) => {
   );
 }
 
-
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
-});
-
-
-
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default App;
