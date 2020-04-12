@@ -67,6 +67,14 @@ export const convertCollectionSnapshotToMap = (collection) => {
   }, {})
 }
 
+export const fetchCollectionRequest = async () => {
+  const collectionRef = firestore.collection('collection');
+  const snapShot = await collectionRef.get()
+  const collectionsMap = await convertCollectionSnapshotToMap(snapShot);
+  return collectionsMap;
+}
+
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
@@ -75,6 +83,7 @@ provider.setCustomParameters({ prompt: 'select_account' });
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export default firebase;
+
 
 
 
