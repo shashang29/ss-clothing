@@ -6,7 +6,8 @@ import CustomButton from '../custom-button/custom-button.component';
 
 import { auth, createUserProfileDocument, signInWithGoogle } from '../../firebase/firebase.utils';
 
-import './register.styles.scss';
+import { RegisterContainer, RegisterTitle, RegisterForm, ButtonContainer } from './register.styles'
+
 
 const Register = () => {
 
@@ -49,9 +50,9 @@ const Register = () => {
     };
 
     return (
-        <div className='register'>
-            <h1>Register</h1>
-            <form className='register-form'
+        <RegisterContainer>
+            <RegisterTitle>Register</RegisterTitle>
+            <RegisterForm
                 onSubmit={handleSubmit} >
                 <FormInput
                     name='displayName'
@@ -85,14 +86,14 @@ const Register = () => {
                     label='Confirm Password'
                     required
                 />
-                <div className='button-container'>
+                <ButtonContainer>
                     <CustomButton type='submit' > Register </CustomButton>
                     <CustomButton type='button'
                         onClick={signInWithGoogle}
                         isGoogleSignIn> Register with Google </CustomButton>
-                </div>
-            </form>
-        </div>
+                </ButtonContainer>
+            </RegisterForm>
+        </RegisterContainer>
     );
 }
 

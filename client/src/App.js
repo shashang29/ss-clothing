@@ -4,8 +4,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shoppage/shoppage.component';
-import SignInPage from './pages/signinpage/signinpage.component';
-import RegisterPage from './pages/registerpage/registerpage.component';
+import SignInPage from './pages/signin-and-registerpage/signinpage/signinpage.component';
+import RegisterPage from './pages/signin-and-registerpage/registerpage/registerpage.component';
 import Header from './components/header/header.component';
 import CheckoutPage from './pages/checkoutpage/checkoutpage.component';
 
