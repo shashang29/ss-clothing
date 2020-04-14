@@ -12,8 +12,7 @@ import CheckoutPage from './pages/checkoutpage/checkoutpage.component';
 import CurrentUserContext from './contexts/current-user/current-user.context';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
-
-import './App.css';
+import {GlobalStyle } from './global.styles';
 
 const App = () => {
 
@@ -39,6 +38,7 @@ const App = () => {
 
   return (
     <div>
+    <GlobalStyle/>
     <CurrentUserContext.Provider value={currentUser}>
       <Header />
       </CurrentUserContext.Provider>

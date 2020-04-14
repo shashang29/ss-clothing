@@ -33,9 +33,12 @@ export const HeaderBlockContainer = styled.div`
   width: 23%;
   display:flex;
   justify-content: center;
-            @media (max-width: 600px) {
-                font-size: 12px;
-            }
+ @media (max-width: 600px) {
+    font-size: 12px;
+  }
+  @media (max-width: 400px) {
+    font-size: 8px;
+  }
   &:last-child {
     width: 8%;
   }
@@ -45,7 +48,9 @@ export const TotalContainer = styled.div`
   margin-left: auto;
   font-size: 26px;
   margin-top: 10px;
-  
+  @media (max-width: 600px) {
+    font-size: 14px;
+  }
 `;
 
 export const WarningContainer = styled.div`
@@ -53,4 +58,7 @@ export const WarningContainer = styled.div`
    margin: 10px 0px;
    color: red;
     line-height: 30px;
+    @media (max-width: 600px) {
+    font-size: 12px;
+  }
 `;
