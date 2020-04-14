@@ -60,13 +60,9 @@ export const OptionLink = styled(Link)`
         padding: 5px 5px;
         font-size: 14px;
       }
-      @media (max-width: 500px) {
+      @media (max-width: 400px) {
         padding: 2px 2px;
         font-size: 10px;
-      }
-      @media (max-width: 350px) {
-        padding: 1px 1px;
-        font-size: 8px;
       }
       &:hover{
         transform: scale(1.1);

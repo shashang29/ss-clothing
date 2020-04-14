@@ -1,22 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-
-import HomePage from './pages/homepage/homepage.component';
-import ShopPage from './pages/shoppage/shoppage.component';
-import SignInPage from './pages/signin-and-registerpage/signinpage/signinpage.component';
-import RegisterPage from './pages/signin-and-registerpage/registerpage/registerpage.component';
 import Header from './components/header/header.component';
-import CheckoutPage from './pages/checkoutpage/checkoutpage.component';
-
 import CurrentUserContext from './contexts/current-user/current-user.context';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
-import {GlobalStyle } from './global.styles';
+import { GlobalStyle } from './global.styles';
+
+const HomePage = lazy(() => import('./pages/homepage/homepage.component'));
+const ShopPage = lazy(() => import('./pages/shoppage/shoppage.component'));
+const SignInPage = lazy(() =>
+  import('./pages/signin-and-registerpage/signinpage/signinpage.component'));
+const RegisterPage = lazy(() =>
+  import('./pages/signin-and-registerpage/registerpage/registerpage.component'));
+const CheckoutPage = lazy(() => import('./pages/checkoutpage/checkoutpage.component'));
+
 
 const App = () => {
 
-  const [currentUser, setCurrentUser]=useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     const unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
@@ -38,30 +40,32 @@ const App = () => {
 
   return (
     <div>
-    <GlobalStyle/>
-    <CurrentUserContext.Provider value={currentUser}>
-      <Header />
+      <GlobalStyle />
+      <CurrentUserContext.Provider value={currentUser}>
+        <Header />
       </CurrentUserContext.Provider>
       <Switch>
-        <Route exact path='/' component={HomePage} />
-        <Route path='/shop' component={ShopPage} />
-        <Route path='/checkout' component={CheckoutPage} />
-        <Route exact path='/signin'
-          render={() =>
-            currentUser ? (
-              <Redirect to='/' />
-            ) : (
-                <SignInPage />
-              )}
-        />
-        <Route exact path='/register'
-          render={() =>
-            currentUser ? (
-              <Redirect to='/' />
-            ) : (
-                <RegisterPage />
-              )}
-        />
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <Route exact path='/' component={HomePage} />
+          <Route path='/shop' component={ShopPage} />
+          <Route path='/checkout' component={CheckoutPage} />
+          <Route exact path='/signin'
+            render={() =>
+              currentUser ? (
+                <Redirect to='/' />
+              ) : (
+                  <SignInPage />
+                )}
+          />
+          <Route exact path='/register'
+            render={() =>
+              currentUser ? (
+                <Redirect to='/' />
+              ) : (
+                  <RegisterPage />
+                )}
+          />
+        </Suspense>
       </Switch>
     </div>
   );
