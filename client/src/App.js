@@ -2,6 +2,7 @@ import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Header from './components/header/header.component';
+
 import CurrentUserContext from './contexts/current-user/current-user.context';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
