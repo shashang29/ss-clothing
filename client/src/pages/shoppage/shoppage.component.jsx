@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,lazy } from 'react';
 import { Route } from 'react-router-dom';
 
 
@@ -6,8 +6,12 @@ import { fetchCollectionRequest } from '../../firebase/firebase.utils';
 import CollectionsContext from '../../contexts/collections/collections.context';
 
 import WithSpinner from '../../components/with-spinner/with-spinner.component';
-import CollectionsOverview from '../../components/collections-overview/collections-overview.component';
-import CollectionPage from '../collection/collection.component';
+
+
+const CollectionsOverview = lazy(() =>
+  import('../../components/collections-overview/collections-overview.component'));
+const CollectionPage = lazy(() =>
+  import('../collection/collection.component'));
 
 const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview);
 const CollectionPageWithSpinner = WithSpinner(CollectionPage);
