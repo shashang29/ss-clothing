@@ -2,6 +2,7 @@ import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Header from './components/header/header.component';
+import Spinner from './components/spinner/spinner.component';
 
 import CurrentUserContext from './contexts/current-user/current-user.context';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
@@ -46,7 +47,7 @@ const App = () => {
         <Header />
       </CurrentUserContext.Provider>
       <Switch>
-        <Suspense fallback={<h1>Loading...</h1>}>
+        <Suspense fallback={<Spinner />}>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
           <Route path='/checkout' component={CheckoutPage} />

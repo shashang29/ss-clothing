@@ -1,17 +1,14 @@
 import React from 'react';
 
+import Spinner from '../spinner/spinner.component';
 import CollectionsContext from '../../contexts/collections/collections.context';
 
-
-import { SpinnerContainer, SpinnerOverlay } from './with-spinner.styles';
 
 const WithSpinner = WrappedComponent => ({match}) => {
     return (
         <CollectionsContext.Consumer>
             {({ isLoading }) => {
-                return isLoading ? (<SpinnerOverlay>
-                    <SpinnerContainer />
-                </SpinnerOverlay>)
+                return isLoading ? <Spinner/>
                     : <WrappedComponent match={match}  />
             }}
         </CollectionsContext.Consumer>
