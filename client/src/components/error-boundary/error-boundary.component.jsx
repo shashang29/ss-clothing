@@ -2,7 +2,6 @@ import React from 'react';
 
 import {
   ErrorImageOverlay,
-  ErrorImageContainer,
   ErrorImageText
 } from './error-boundary.styles';
 
