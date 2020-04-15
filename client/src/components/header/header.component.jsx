@@ -13,6 +13,7 @@ import { HeaderContainer, LogoContainer, Logo, OptionsContainer, OptionLink } fr
 const Header = () => {
   const currentUser = useContext(CurrentUserContext)
   const { hidden, clearCart } = useContext(CartContext);
+  
   return (
     <HeaderContainer>
       <LogoContainer to='/'>
@@ -47,4 +48,4 @@ const Header = () => {
   );
 }
 
-export default Header;
+export default React.memo(Header);

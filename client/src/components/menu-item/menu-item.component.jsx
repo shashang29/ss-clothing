@@ -25,4 +25,4 @@ const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
 </MenuItemContainer>
 );
 
-export default withRouter(MenuItem);
+export default React.memo(withRouter(MenuItem));

@@ -31,4 +31,4 @@ const CollectionItem = ({ item }) => {
 
 
 
-export default CollectionItem;
+export default React.memo(CollectionItem);

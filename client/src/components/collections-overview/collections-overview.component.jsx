@@ -22,4 +22,4 @@ const CollectionsOverview = () => {
 
 
 
-export default CollectionsOverview;
+export default React.memo(CollectionsOverview);
