@@ -9,7 +9,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
 
-enforce.HTTPS({ trustProtoHeader: true })
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 const port = process.env.PORT || 5000;
 
