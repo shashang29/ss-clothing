@@ -2,12 +2,15 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const compression = require('compression');
-
+const enforce = require('express-sslify');
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
+
+enforce.HTTPS({ trustProtoHeader: true })
+
 const port = process.env.PORT || 5000;
 
 app.use(compression());
