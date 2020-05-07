@@ -8,21 +8,23 @@ import {
   getCartTotal
 } from './cart.utils';
 
+const storedState = JSON.parse(sessionStorage.getItem('cartItems'));
+
 export const CartContext = createContext({
   hidden: true,
-  toggleHidden: () => {},
+  toggleHidden: () => { },
   cartItems: [],
-  addItem: () => {},
-  removeItem: () => {},
-  clearItemFromCart: () => {},
-  clearCart: ()=>{},
+  addItem: () => { },
+  removeItem: () => { },
+  clearItemFromCart: () => { },
+  clearCart: () => { },
   cartItemsCount: 0,
   cartTotal: 0
 });
 
 const CartProvider = ({ children }) => {
   const [hidden, setHidden] = useState(true);
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(storedState ? storedState : []);
   const [cartItemsCount, setCartItemsCount] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
 
@@ -31,10 +33,11 @@ const CartProvider = ({ children }) => {
   const toggleHidden = () => setHidden(!hidden);
   const clearItemFromCart = item =>
     setCartItems(filterItemFromCart(cartItems, item));
-  const clearCart= ()=> setCartItems([])
+  const clearCart = () => setCartItems([])
 
   useEffect(() => {
     setCartItemsCount(getCartItemsCount(cartItems));
+    sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
     setCartTotal(getCartTotal(cartItems));
   }, [cartItems]);
 
